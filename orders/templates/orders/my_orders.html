@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <div class="flex items-center justify-between mb-8">
+        <h1 class="text-3xl font-extrabold tracking-tight">Order History</h1>
+        <a href="/" class="text-sm font-medium text-black hover:underline hidden sm:block">Continue Shopping &rarr;</a>
+    </div>
+
+    {% if orders %}
+        <div class="space-y-6">
+            {% for order in orders %}
+            <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+                
+                <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Order Placed</p>
+                        <p class="font-medium text-gray-900">{{ order.created_at|date:"F j, Y" }}</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Total Amount</p>
+                        <p class="font-bold text-black">₹{{ order.get_total }}</p>
+                    </div>
+                    <div class="sm:text-right">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Order #</p>
+                        <p class="font-medium text-gray-900">{{ order.id }}</p>
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <ul class="divide-y divide-gray-100">
+                        {% for item in order.items.all %}
+                        <li class="py-4 flex items-center gap-6 {% if forloop.first %}pt-0{% endif %} {% if forloop.last %}pb-0 border-none{% endif %}">
+                            <div class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center p-2">
+                                <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}/media/products/default.png{% endif %}" class="object-contain w-full h-full">
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-900">{{ item.product.name }}</h4>
+                                <p class="text-sm text-gray-500">Qty: {{ item.quantity }}</p>
+                            </div>
+                            <div class="font-bold text-black">
+                                ₹{{ item.product.price }}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50/50 px-6 py-4 border-t border-gray-100 flex items-center justify-between">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-800">
+                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Processing
+                    </span>
+                    <button class="text-sm font-semibold text-black hover:underline">View Invoice</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="bg-white rounded-3xl p-12 border border-gray-100 text-center">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-50 mb-6">
+                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+            </div>
+            <h2 class="text-xl font-bold text-gray-900 mb-2">No orders placed yet</h2>
+            <p class="text-gray-500 mb-6">When you purchase an item, your receipt and tracking info will appear here.</p>
+            <a href="/" class="bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">Start Shopping</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

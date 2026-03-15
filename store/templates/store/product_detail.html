@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <nav class="text-sm font-medium text-gray-500 mb-8">
+        <a href="/" class="hover:text-black transition-colors">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/?category={{ product.category.id }}" class="hover:text-black transition-colors">{{ product.category.name }}</a>
+        <span class="mx-2">/</span>
+        <span class="text-black">{{ product.name }}</span>
+    </nav>
+
+    <div class="flex flex-col lg:flex-row gap-16 mb-20">
+        
+        <div class="lg:w-1/2">
+            <div class="sticky top-28 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm aspect-square flex items-center justify-center overflow-hidden">
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}/media/products/default.png{% endif %}" 
+                     alt="{{ product.name }}" 
+                     class="w-full h-full object-contain hover:scale-110 transition-transform duration-500 cursor-zoom-in">
+            </div>
+        </div>
+
+        <div class="lg:w-1/2 flex flex-col justify-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 mb-4">{{ product.name }}</h1>
+            
+            <div class="flex items-center gap-4 mb-6">
+                <div class="text-3xl font-bold text-black">₹{{ product.price }}</div>
+                
+                <div class="flex items-center text-sm">
+                    <div class="flex text-yellow-400 text-lg mr-2">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= product.average_rating %}★{% else %}<span class="text-gray-300">★</span>{% endif %}
+                        {% endfor %}
+                    </div>
+                    <span class="text-gray-500">({{ product.review_count }} reviews)</span>
+                </div>
+            </div>
+
+            <p class="text-lg text-gray-600 mb-10 leading-relaxed">{{ product.description }}</p>
+
+            <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                <button class="add-to-cart flex-1 bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-transform active:scale-95 shadow-lg shadow-black/20" data-product="{{product.id}}">
+                    Add to Cart
+                </button>
+                <a href="/wishlist/add/{{product.id}}/" class="flex items-center justify-center px-8 py-4 rounded-full font-bold text-lg border-2 border-gray-200 hover:border-black transition-colors">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    Save
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <hr class="border-gray-200 mb-16">
+
+    {% if related_products %}
+    <div class="mb-20">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">You may also like</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {% for item in related_products %}
+            <a href="/product/{{item.id}}/" class="group block bg-white rounded-2xl p-4 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                <div class="aspect-square bg-gray-50 rounded-xl mb-4 flex items-center justify-center p-4 overflow-hidden">
+                    <img src="{% if item.image %}{{ item.image.url }}{% else %}/media/products/default.png{% endif %}" class="object-contain w-full h-full group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <h3 class="font-semibold text-gray-900 truncate">{{ item.name }}</h3>
+                <p class="text-black font-bold mt-1">₹{{ item.price }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
+        <div class="lg:col-span-2">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Customer Reviews</h2>
+            <div class="space-y-6">
+                {% for review in reviews %}
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-gray-900">{{ review.name }}</h4>
+                        <div class="flex text-yellow-400 text-sm">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}★{% else %}<span class="text-gray-300">★</span>{% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">{{ review.comment }}</p>
+                </div>
+                {% empty %}
+                <div class="bg-gray-50 rounded-2xl p-8 text-center border border-gray-100">
+                    <p class="text-gray-500">No reviews yet. Be the first to share your thoughts!</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 sticky top-28">
+                <h3 class="text-xl font-bold text-gray-900 mb-6">Write a Review</h3>
+                <form method="POST" class="space-y-4">
+                    {% csrf_token %}
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                        <input type="text" name="name" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-black focus:outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Rating</label>
+                        <select name="rating" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-black focus:outline-none transition-colors">
+                            <option value="5">5 Stars - Excellent</option>
+                            <option value="4">4 Stars - Good</option>
+                            <option value="3">3 Stars - Average</option>
+                            <option value="2">2 Stars - Poor</option>
+                            <option value="1">1 Star - Terrible</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Comment</label>
+                        <textarea name="comment" rows="4" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black focus:border-black focus:outline-none transition-colors placeholder-gray-400" placeholder="What did you like or dislike?"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-black text-white font-bold py-3 rounded-lg hover:bg-gray-800 transition-colors mt-2">Submit Review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", function(){
+        const productId = this.dataset.product;
+        fetch(`/cart/add/${productId}/`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("cart-count").innerText = data.cart_count;
+            showNotification("Added to your cart successfully!");
+            toggleCart();
+        });
+    });
+});
+</script>
+{% endblock %}

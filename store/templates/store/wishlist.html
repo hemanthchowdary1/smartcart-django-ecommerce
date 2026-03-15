@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    
+    <div class="flex items-center justify-between mb-8">
+        <h1 class="text-3xl font-extrabold tracking-tight">My Wishlist</h1>
+        {% if items %}
+            <span class="bg-gray-100 text-gray-600 py-1 px-3 rounded-full text-sm font-semibold">
+                {{ items|length }} Item{% if items|length > 1 %}s{% endif %}
+            </span>
+        {% endif %}
+    </div>
+
+    {% if items %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {% for item in items %}
+            <div class="group relative bg-white rounded-2xl p-4 transition-all duration-300 hover:shadow-xl border border-gray-100 flex flex-col h-full">
+                
+                <a href="/wishlist/remove/{{ item.id }}/" class="absolute top-6 right-6 z-10 p-2 bg-white/80 backdrop-blur-md rounded-full text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all shadow-sm" title="Remove from wishlist">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </a>
+
+                <a href="/product/{{ item.product.id }}/" class="block overflow-hidden rounded-xl mb-4 bg-gray-50 aspect-square flex items-center justify-center relative">
+                    <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}/media/products/default.png{% endif %}" alt="{{ item.product.name }}" class="object-contain w-full h-full p-4 group-hover:scale-105 transition-transform duration-500">
+                </a>
+
+                <div class="flex flex-col flex-grow">
+                    <a href="/product/{{ item.product.id }}/" class="text-lg font-semibold text-gray-900 hover:underline line-clamp-1 mb-1">{{ item.product.name }}</a>
+                    <p class="text-xl font-bold text-black mb-4">₹{{ item.product.price }}</p>
+                    
+                    <div class="mt-auto">
+                        <button class="add-to-cart w-full bg-black text-white px-4 py-3 rounded-xl font-bold hover:bg-gray-800 transition-transform active:scale-95 flex items-center justify-center gap-2" data-product="{{ item.product.id }}">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            Move to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="bg-white rounded-3xl p-12 border border-gray-100 text-center max-w-2xl mx-auto mt-10">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-50 mb-6">
+                <svg class="w-10 h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Your wishlist is empty</h2>
+            <p class="text-gray-500 mb-8">Save items you love here and buy them later when you're ready.</p>
+            <a href="/" class="bg-black text-white px-8 py-3.5 rounded-full font-bold hover:bg-gray-800 transition-transform active:scale-95 shadow-lg shadow-black/20">
+                Explore Products
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", function(){
+        const productId = this.dataset.product;
+        fetch(`/cart/add/${productId}/`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("cart-count").innerText = data.cart_count;
+            showNotification("Item moved to your cart!"); 
+            
+            // Optional: You could reload the page here to remove it from the wishlist, 
+            // but simply showing the toast is a great user experience.
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+</script>
+{% endblock %}

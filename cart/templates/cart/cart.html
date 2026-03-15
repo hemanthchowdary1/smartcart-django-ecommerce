@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+    <h1 class="text-3xl font-extrabold tracking-tight mb-8">Shopping Cart</h1>
+
+    {% if items %}
+        <div class="space-y-6">
+            {% for item in items %}
+            <div class="flex items-center justify-between border-b border-gray-100 pb-6">
+                <div class="flex items-center gap-6">
+                    <div class="w-24 h-24 bg-gray-50 rounded-xl p-2 flex items-center justify-center flex-shrink-0">
+                        <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}/media/products/default.png{% endif %}" alt="{{ item.product.name }}" class="object-contain w-full h-full">
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900">{{ item.product.name }}</h3>
+                        <p class="text-gray-500 mt-1">₹{{ item.product.price }}</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 bg-gray-50 rounded-full px-4 py-2 border border-gray-200">
+                    <a href="/cart/decrease/{{item.id}}/" class="text-gray-500 hover:text-black font-bold px-2">-</a>
+                    <span class="font-medium text-gray-900">{{ item.quantity }}</span>
+                    <a href="/cart/increase/{{item.id}}/" class="text-gray-500 hover:text-black font-bold px-2">+</a>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <div class="text-lg font-bold text-black">
+                        ₹{{ item.product.price }} 
+                    </div>
+                    <a href="/cart/remove/{{item.id}}/" class="text-gray-400 hover:text-red-500 transition-colors" title="Remove Item">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="mt-8 pt-8 flex flex-col items-end">
+            <div class="flex items-center gap-4 text-2xl mb-6">
+                <span class="text-gray-500 font-medium">Subtotal:</span>
+                <span class="font-extrabold text-black">₹{{ total }}</span>
+            </div>
+            <a href="/checkout/" class="bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-colors w-full sm:w-auto text-center">
+                Proceed to Checkout
+            </a>
+        </div>
+    {% else %}
+        <div class="text-center py-16">
+            <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gray-50 mb-6">
+                <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Your cart is empty</h2>
+            <p class="text-gray-500 mb-8">Looks like you haven't added anything to your cart yet.</p>
+            <a href="/" class="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">Start Shopping</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCart | Premium E-Commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        /* Smooth hiding/showing for the drawer */
+        .drawer-open { transform: translateX(0%); }
+        .drawer-closed { transform: translateX(100%); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased overflow-x-hidden">
+
+    <nav class="fixed w-full z-40 top-0 transition-all duration-300 backdrop-blur-md bg-white/70 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/" class="text-2xl font-extrabold tracking-tighter text-black">SmartCart.</a>
+                </div>
+
+                <div class="flex-1 max-w-md mx-8 hidden md:block">
+                    <form action="/" method="GET" class="relative">
+                        <input type="text" name="search" placeholder="Search products..." class="w-full bg-gray-100 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-black transition-shadow">
+                    </form>
+                </div>
+
+                <div class="flex items-center space-x-6 text-sm font-medium">
+                    {% if user.is_authenticated %}
+                        <a href="/wishlist/" class="hover:text-gray-500 transition-colors hidden sm:block">Wishlist</a>
+                        <a href="/my-orders/" class="hover:text-gray-500 transition-colors hidden sm:block">Orders</a>
+                        <a href="/logout/" class="hover:text-red-500 transition-colors">Logout</a>
+                    {% else %}
+                        <a href="/accounts/login/" class="hover:text-gray-500 transition-colors">Login</a>
+                        <a href="/signup/" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">Sign Up</a>
+                    {% endif %}
+                    
+                    <button onclick="toggleCart()" class="relative flex items-center hover:text-gray-500 transition-colors cursor-pointer">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-black text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">{{ cart_count|default:"0" }}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white z-50 drawer-closed transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+        
+        <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+            <h2 class="text-xl font-extrabold text-gray-900 flex items-center gap-2">
+                Your Cart <span class="bg-black text-white text-xs px-2 py-1 rounded-full">{{ cart_count|default:"0" }}</span>
+            </h2>
+            <button onclick="toggleCart()" class="p-2 text-gray-400 hover:text-black hover:bg-gray-100 rounded-full transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-6 space-y-6">
+            {% if cart_items %}
+                {% for item in cart_items %}
+                <div class="flex items-center gap-4">
+                    <div class="w-20 h-20 bg-gray-50 rounded-xl p-2 flex-shrink-0 border border-gray-100">
+                        <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}/media/products/default.png{% endif %}" class="w-full h-full object-contain">
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-gray-900 text-sm line-clamp-1">{{ item.product.name }}</h4>
+                        <p class="text-gray-500 text-sm mb-2">₹{{ item.product.price }}</p>
+                        
+                        <div class="flex items-center gap-3 bg-gray-50 w-fit rounded-full px-3 py-1 border border-gray-200 text-sm">
+                            <a href="/cart/decrease/{{item.id}}/" class="text-gray-500 hover:text-black font-bold">-</a>
+                            <span class="font-medium text-gray-900">{{ item.quantity }}</span>
+                            <a href="/cart/increase/{{item.id}}/" class="text-gray-500 hover:text-black font-bold">+</a>
+                        </div>
+                    </div>
+                    <a href="/cart/remove/{{item.id}}/" class="text-gray-300 hover:text-red-500 p-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    </a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="h-full flex flex-col items-center justify-center text-center opacity-50">
+                    <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <p class="text-lg font-bold text-gray-900">Your cart is empty</p>
+                    <p class="text-sm text-gray-500 mt-2">Add some premium items to get started.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="p-6 border-t border-gray-100 bg-gray-50/50">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-gray-500 font-medium">Subtotal</span>
+                <span class="text-2xl font-extrabold text-black">₹{{ cart_total|default:"0" }}</span>
+            </div>
+            <a href="/checkout/" class="block w-full text-center bg-black text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-transform active:scale-95 shadow-lg shadow-black/20 mb-3">
+                Secure Checkout
+            </a>
+            <a href="/cart/" class="block w-full text-center text-sm font-bold text-gray-600 hover:text-black transition-colors">
+                View Full Cart
+            </a>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        // Cool notification system
+        function showNotification(message) {
+            Toastify({
+                text: message,
+                duration: 3000,
+                gravity: "bottom", 
+                position: "right", 
+                style: {
+                    background: "black",
+                    color: "white",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+                }
+            }).showToast();
+        }
+
+        // Drawer Toggle Logic
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            const body = document.body;
+
+            if (drawer.classList.contains('drawer-closed')) {
+                // Open Drawer
+                drawer.classList.remove('drawer-closed');
+                drawer.classList.add('drawer-open');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                // Close Drawer
+                drawer.classList.remove('drawer-open');
+                drawer.classList.add('drawer-closed');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+                body.style.overflow = 'auto'; // Restore background scrolling
+            }
+        }
+    </script>
+</body>
+</html>
