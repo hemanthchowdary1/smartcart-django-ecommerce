@@ -66,4 +66,4 @@ templates/ → Shared templates
 
 ## Installation
 
-Clone the repository:
+Clone the repository

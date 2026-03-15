@@ -66,9 +66,6 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
         .then(data => {
             document.getElementById("cart-count").innerText = data.cart_count;
             showNotification("Item moved to your cart!"); 
-            
-            // Optional: You could reload the page here to remove it from the wishlist, 
-            // but simply showing the toast is a great user experience.
         })
         .catch(error => console.error('Error:', error));
     });

@@ -10,7 +10,7 @@ class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     session_id = models.CharField(max_length=255, null=True, blank=True)
     
-    # FIX: Use timezone.now as the default so Django knows exactly how to format old rows
+    # Use timezone.now as the default so Django knows exactly how to format old rows
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

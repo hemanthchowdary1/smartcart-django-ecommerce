@@ -8,7 +8,7 @@ def _cart_id(request):
     if not cart:
         request.session.create()
     
-    # FIX: Force Django to save the session and send the cookie to the browser
+    # Force Django to save the session and send the cookie to the browser
     request.session['cart_active'] = True 
     
     return request.session.session_key

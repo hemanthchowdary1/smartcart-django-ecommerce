@@ -77,7 +77,7 @@ def product_detail(request, product_id):
             rating=rating,
             comment=comment
         )
-        # FIX: Redirect to the same page to prevent form resubmission on refresh
+        # Redirect to the same page to prevent form resubmission on refresh
         return redirect('product_detail', product_id=product.id) 
 
     related_products = Product.objects.filter(
@@ -102,7 +102,7 @@ def signup(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
 
-        # FIX: Check if username already exists to prevent a 500 Server Error
+        # Check if username already exists to prevent a 500 Server Error
         if User.objects.filter(username=username).exists():
             return render(request, "registration/signup.html", {"error": "Username is already taken."})
 
@@ -121,7 +121,7 @@ def user_logout(request):
 
 @login_required
 def add_to_wishlist(request, product_id):
-    # FIX: Prevents crash if product doesn't exist
+    # Prevents crash if product doesn't exist
     product = get_object_or_404(Product, id=product_id) 
 
     Wishlist.objects.get_or_create(
