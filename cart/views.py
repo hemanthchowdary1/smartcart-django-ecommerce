@@ -13,7 +13,7 @@ def _cart_id(request):
     
     return request.session.session_key
 
-# 1. The Add to Cart Logic (AJAX/Fetch friendly)
+# 1. The Add to Cart Logic
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     

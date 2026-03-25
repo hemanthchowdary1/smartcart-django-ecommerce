@@ -212,11 +212,10 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
             document.getElementById("cart-count").innerText = data.cart_count;
             showNotification("Added to your cart successfully!"); 
             
-            // 3. MAGIC FIX: Quietly fetch the fresh page HTML in the background
+            // 3. Quietly fetch the fresh page HTML in the background
             fetch(window.location.href)
             .then(res => res.text())
             .then(html => {
-                // Parse the new HTML
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, "text/html");
                 
