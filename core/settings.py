@@ -94,3 +94,22 @@ LOGOUT_REDIRECT_URL = "/accounts/login/"
 
 # DEFAULT PK
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import json
+from django.core.management import call_command
+from django.db.utils import OperationalError
+
+def load_products():
+    try:
+        from store.models import Product
+        if Product.objects.count() == 0:
+            with open(BASE_DIR / "products.json") as f:
+                data = json.load(f)
+                for obj in data:
+                    fields = obj["fields"]
+                    Product.objects.create(**fields)
+            print("Products loaded")
+    except Exception as e:
+        print("Error loading products:", e)
+
+load_products()
