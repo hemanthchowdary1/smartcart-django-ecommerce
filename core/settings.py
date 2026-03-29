@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'orders',
 ]
 
-# MIDDLEWARE (IMPORTANT: whitenoise added)
+# MIDDLEWARE
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
