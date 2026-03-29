@@ -1,0 +1,522 @@
+[
+{
+  "model": "store.product",
+  "pk": 1,
+  "fields": {
+    "name": "iPhone 17 Pro Max",
+    "category": 1,
+    "description": "Introducing iPhone 17 Pro and iPhone 17 Pro Max, designed from the inside out to be the most powerful iPhone models ever made. At the core of the new design is a heat-forged aluminium unibody enclosure that maximises performance, battery capacity and durability.",
+    "price": "140000.00",
+    "image": "products/iphone_17_pro_max_silver_pdp_image_position_1__en-in.jpg.avif",
+    "stock": 120,
+    "created_at": "2026-03-14T08:20:23.977Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 2,
+  "fields": {
+    "name": "Macbook Air M5",
+    "category": 1,
+    "description": "MacBook Air is remarkably light at just 1.23 kilograms, and under 1.15 centimetres thin. It’s designed to fit easily into your bag, so you can always take it with you. It’s also made with over 50% recycled materials and has a durable recycled aluminium enclosure built to withstand daily use.",
+    "price": "99999.00",
+    "image": "products/314207_0_7ShyEkKjQ.png.webp",
+    "stock": 100,
+    "created_at": "2026-03-14T09:12:45.048Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 3,
+  "fields": {
+    "name": "PlayStation 5",
+    "category": 2,
+    "description": "Sony PlayStation®5 Digital Edition Console Video Game | PS5® SLIM",
+    "price": "49999.00",
+    "image": "products/227608-image3_1_1.jpg.webp",
+    "stock": 20,
+    "created_at": "2026-03-14T09:26:11.376Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 4,
+  "fields": {
+    "name": "iPhone Case",
+    "category": 3,
+    "description": "Step perform note ever eight pick. Summer get continue week page or.\r\nStudent business product concern system. Position talk hot wall.",
+    "price": "77133.00",
+    "image": "products/MYY63.jpeg",
+    "stock": 57,
+    "created_at": "2026-03-14T12:01:08.441Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 5,
+  "fields": {
+    "name": "Gaming Mouse",
+    "category": 3,
+    "description": "Agreement those quality especially. Behind pay stop general college its program raise.\r\nCompany end much source as. Treatment land from their. Impact so Democrat away lawyer son difference suffer.",
+    "price": "94309.00",
+    "image": "products/images.jpeg",
+    "stock": 84,
+    "created_at": "2026-03-14T12:01:08.443Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 6,
+  "fields": {
+    "name": "USB-C Hub",
+    "category": 1,
+    "description": "Yeah benefit manage thing cost data TV. Great country decide skill single. Now meet six general night.\r\nReligious church own in. Sometimes us store whose town station if.",
+    "price": "77437.00",
+    "image": "products/Image1_7c162d3c-9ed3-4cda-9f9a-79ed2e6f1eb0.jpg.webp",
+    "stock": 26,
+    "created_at": "2026-03-14T12:01:08.443Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 7,
+  "fields": {
+    "name": "Gaming Mouse",
+    "category": 3,
+    "description": "Student yes only fish style. Different success office ok whose probably property.",
+    "price": "91107.00",
+    "image": "products/g502x-plus-gallery-2-black.webp",
+    "stock": 59,
+    "created_at": "2026-03-14T12:01:08.443Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 8,
+  "fields": {
+    "name": "Mechanical Keyboard",
+    "category": 2,
+    "description": "Statement manager allow reflect. Pm owner identify interesting measure. Significant professional sister up any over paper.",
+    "price": "69676.00",
+    "image": "products/111.jpg.avif",
+    "stock": 29,
+    "created_at": "2026-03-14T12:01:08.444Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 12,
+  "fields": {
+    "name": "Smart Watch",
+    "category": 3,
+    "description": "Assume right defense various pass next but. Continue particular provide arrive message since. News realize professional process so would.\r\nHundred news too. Feeling same clearly theory.",
+    "price": "74560.00",
+    "image": "products/309465_0_stnogk.png.webp",
+    "stock": 17,
+    "created_at": "2026-03-14T12:01:08.445Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 13,
+  "fields": {
+    "name": "Gaming Mouse",
+    "category": 1,
+    "description": "Last indeed perform south speech. Run notice exist across each soon personal. Issue finally but series.\r\nSpend leader minute truth wife relationship also. Door answer service seven sign market nature.",
+    "price": "143542.00",
+    "image": "products/Redragon-M913-Impact-Elite-Wired-and-Wireless-Gaming-Mouse-Black-1-e1722667722926.jpg",
+    "stock": 31,
+    "created_at": "2026-03-14T12:01:08.445Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 14,
+  "fields": {
+    "name": "Gaming Laptop",
+    "category": 3,
+    "description": "Better run audience give culture. Floor help stuff their take.\r\nUp quite behind claim throughout. Near blood even. Medical blood news north something seven away.",
+    "price": "48760.00",
+    "image": "products/20200824120814.jpg",
+    "stock": 92,
+    "created_at": "2026-03-14T12:01:08.446Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 15,
+  "fields": {
+    "name": "iPhone Case",
+    "category": 3,
+    "description": "Deal time reach bank way. Station teach case where enough whose probably anything. Ever throughout case reduce language pretty.",
+    "price": "48629.00",
+    "image": "products/images-3.jpeg",
+    "stock": 88,
+    "created_at": "2026-03-14T12:01:08.447Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 16,
+  "fields": {
+    "name": "Wireless Earbuds",
+    "category": 3,
+    "description": "Other because which movement account ok young. Debate her floor become piece speak prevent.\r\nPerson remain significant back a action partner. Six property nation for ground.",
+    "price": "31675.00",
+    "image": "products/images-4.jpeg",
+    "stock": 74,
+    "created_at": "2026-03-14T12:01:08.447Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 17,
+  "fields": {
+    "name": "Smart Watch",
+    "category": 2,
+    "description": "Significant mind cause happy TV least indeed. Role artist above however edge budget. Involve instead since car push quality during.\r\nCold within certain mother modern most law.",
+    "price": "110038.00",
+    "image": "products/apple-watch-series-9.png",
+    "stock": 43,
+    "created_at": "2026-03-14T12:01:08.447Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 18,
+  "fields": {
+    "name": "Gaming Mouse",
+    "category": 2,
+    "description": "Morning agency seem single. Phone effect window and. Head scientist go fast score professor trade how.\r\nGeneration knowledge event expert half reveal wrong. Fire hit build across where partner short.",
+    "price": "68935.00",
+    "image": "products/LkMIo8T3PeB4T-xxlarge.jpg.webp",
+    "stock": 55,
+    "created_at": "2026-03-14T12:01:08.448Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 19,
+  "fields": {
+    "name": "4K Smart TV",
+    "category": 3,
+    "description": "Accept threat child. Similar how fire prepare find data. Mean room turn lot ability skin. Over where opportunity great campaign.",
+    "price": "35245.00",
+    "image": "products/1686f30-c1untitled-1.png",
+    "stock": 48,
+    "created_at": "2026-03-14T12:01:08.448Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 20,
+  "fields": {
+    "name": "Smart Watch",
+    "category": 3,
+    "description": "Expert hour after central though population political. Candidate light lose choice central increase condition some. Bring difference along officer.",
+    "price": "108853.00",
+    "image": "products/81XIJVqW-2L.jpg",
+    "stock": 93,
+    "created_at": "2026-03-14T12:01:08.448Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 21,
+  "fields": {
+    "name": "4K Smart TV",
+    "category": 2,
+    "description": "Pay soldier coach society know. Hot behind security analysis. Will science major wait next. Yard bit middle beautiful it stuff.",
+    "price": "136286.00",
+    "image": "products/in-crystal-uhd-cu7000-458954-ua43cue60aklxl-536446982.avif",
+    "stock": 57,
+    "created_at": "2026-03-14T12:01:08.449Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 22,
+  "fields": {
+    "name": "Mechanical Keyboard",
+    "category": 1,
+    "description": "Reflect game push daughter participant Mrs expect. Certainly leg group try treat season.\r\nSeem gas specific election but forward want. Produce decade travel. Third make professor go. Safe occur drive.",
+    "price": "124935.00",
+    "image": "products/Vanth_Blue_1.jpg.webp",
+    "stock": 26,
+    "created_at": "2026-03-14T12:01:08.449Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 23,
+  "fields": {
+    "name": "Gaming Laptop",
+    "category": 2,
+    "description": "Yourself before necessary lead understand. Eye inside probably image.\r\nAway ahead parent brother others someone wonder. Customer exist fall remain. Inside own lawyer perform popular.",
+    "price": "68053.00",
+    "image": "products/67c3399a157ced505c376a68-asus-rog-strix-g17-2023-17-3-qhd.jpg",
+    "stock": 95,
+    "created_at": "2026-03-14T12:01:08.449Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 24,
+  "fields": {
+    "name": "Gaming Mouse",
+    "category": 1,
+    "description": "Through cold term network current decide. Treatment hour house international.\r\nImprove power expect image better performance. Owner low group war inside. West debate south.",
+    "price": "16211.00",
+    "image": "products/Front.jpg.webp",
+    "stock": 52,
+    "created_at": "2026-03-14T12:01:08.450Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 25,
+  "fields": {
+    "name": "Wireless Earbuds",
+    "category": 1,
+    "description": "Hot film series admit total even never dog. Daughter ok but serious talk eye. Realize old reduce group specific good drive.\r\nStar agree base great hit part everything. Benefit both possible.",
+    "price": "47295.00",
+    "image": "products/MUVX3.jpeg",
+    "stock": 100,
+    "created_at": "2026-03-14T12:01:08.450Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 26,
+  "fields": {
+    "name": "Smart Watch",
+    "category": 1,
+    "description": "Relationship hospital be outside research condition it chance. I choose heart year sure money. Box modern very give.\r\nRemember capital brother cost fall moment.",
+    "price": "138385.00",
+    "image": "products/Hammerfit.webp",
+    "stock": 43,
+    "created_at": "2026-03-14T12:01:08.451Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 27,
+  "fields": {
+    "name": "Portable SSD",
+    "category": 3,
+    "description": "Consider type finally fine hope financial set. Decision security subject door decade.\r\nMedia collection free discuss measure range. Night wall system concern consumer him.",
+    "price": "54880.00",
+    "image": "products/00jR5OEn9d3h9M6qWvqGNd9-1.webp",
+    "stock": 39,
+    "created_at": "2026-03-14T12:01:08.451Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 28,
+  "fields": {
+    "name": "USB-C Hub",
+    "category": 1,
+    "description": "Law feel stand yet. Never back identify central. Sort I administration education return. Nor clear alone administration score small budget.",
+    "price": "62909.00",
+    "image": "products/71InbQtnQpL.jpg",
+    "stock": 63,
+    "created_at": "2026-03-14T12:01:08.451Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 29,
+  "fields": {
+    "name": "4K Smart TV",
+    "category": 2,
+    "description": "Affect design yourself however. Director able notice food than paper choose.\r\nCall better financial gun everyone. Town common fly stock officer use. Economy list PM around me.",
+    "price": "123786.00",
+    "image": "products/43-uhd-low-price-online-kerala-min-1.png",
+    "stock": 53,
+    "created_at": "2026-03-14T12:01:08.451Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 30,
+  "fields": {
+    "name": "Smart Watch",
+    "category": 2,
+    "description": "Each local court value reflect specific nor. Range camera phone message let arm. Bar attack player network.",
+    "price": "107573.00",
+    "image": "products/49-78-d395-android-ios-cmf-by-nothing-yes-original-imagtnggqgyb8uca.jpeg.webp",
+    "stock": 87,
+    "created_at": "2026-03-14T12:01:08.452Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 31,
+  "fields": {
+    "name": "Wireless Earbuds",
+    "category": 2,
+    "description": "Mission social source. Check wear measure. Sure season minute almost government however because.",
+    "price": "16824.00",
+    "image": "products/Zeb-Pods-O-black-pic-1.jpg.webp",
+    "stock": 10,
+    "created_at": "2026-03-14T12:01:08.452Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 32,
+  "fields": {
+    "name": "USB-C Hub",
+    "category": 3,
+    "description": "Hospital firm different short. Stand tree would start. Positive or morning tend side.\r\nSouth anyone find spring opportunity. Though sort catch. Daughter challenge recent could night their.",
+    "price": "135169.00",
+    "image": "products/52133bb8f991c565_Hub_AVC018btBK-1.jpg",
+    "stock": 18,
+    "created_at": "2026-03-14T12:01:08.453Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 33,
+  "fields": {
+    "name": "Mechanical Keyboard",
+    "category": 1,
+    "description": "Evidence story compare occur task small stay yourself.\r\nSpecific wrong skill ball that general husband.",
+    "price": "87373.00",
+    "image": "products/Ajazz_AK820_Pro_Grey.webp",
+    "stock": 11,
+    "created_at": "2026-03-14T12:01:08.453Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 34,
+  "fields": {
+    "name": "USB-C Hub",
+    "category": 3,
+    "description": "Power difference accept receive laugh. Color official industry eight imagine about.\r\nAnyone rich say. East listen people form. Environmental performance religious place piece reveal nature.",
+    "price": "122839.00",
+    "image": "products/61Nb935ZpsL.jpg",
+    "stock": 70,
+    "created_at": "2026-03-14T12:01:08.453Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 35,
+  "fields": {
+    "name": "Mechanical Keyboard",
+    "category": 3,
+    "description": "Life close better check building American. Little look place respond success court agree.\r\nGet dog style movie important age green. Establish visit type determine.",
+    "price": "142647.00",
+    "image": "products/lumos-pro.jpeg.webp",
+    "stock": 99,
+    "created_at": "2026-03-14T12:01:08.453Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 36,
+  "fields": {
+    "name": "Portable SSD",
+    "category": 1,
+    "description": "Sister agency body area travel clear. Memory either culture throw find special seat large. Everything cover trade home arm.\r\nWish design figure born item. Less today seek you soon.",
+    "price": "91826.00",
+    "image": "products/235285_0_c6fddr.png.webp",
+    "stock": 69,
+    "created_at": "2026-03-14T12:01:08.454Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 37,
+  "fields": {
+    "name": "Gaming Mouse",
+    "category": 1,
+    "description": "College region ago outside fish I different. Fish part student especially teach look. Water source product enter. Station upon visit community operation.",
+    "price": "88482.00",
+    "image": "products/61AcT0ZuO3L.jpg",
+    "stock": 93,
+    "created_at": "2026-03-14T12:01:08.454Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 38,
+  "fields": {
+    "name": "Smart Watch",
+    "category": 3,
+    "description": "Community now marriage couple suggest. Move within sure fill. Others choice reveal assume.\r\nService conference she. Mean often probably group avoid place seem. Line eight nice play.",
+    "price": "50209.00",
+    "image": "products/section13-pic1-mb.jpg.webp",
+    "stock": 42,
+    "created_at": "2026-03-14T12:01:08.454Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 39,
+  "fields": {
+    "name": "Gaming Mouse",
+    "category": 1,
+    "description": "Rate amount around give left daughter.\r\nMedia few in two. Another exactly foot push win color affect.",
+    "price": "104861.00",
+    "image": "products/images-2.jpeg",
+    "stock": 61,
+    "created_at": "2026-03-14T12:01:08.455Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 40,
+  "fields": {
+    "name": "Wireless Earbuds",
+    "category": 2,
+    "description": "Near practice resource notice under really spend. Church agree ever ball language have.\r\nSix person current simple again.\r\nName operation difference peace. Record service require.",
+    "price": "107129.00",
+    "image": "products/havit-wireless-earbuds-tw970-gaminghavit-business-828320.jpg.webp",
+    "stock": 64,
+    "created_at": "2026-03-14T12:01:08.455Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 41,
+  "fields": {
+    "name": "Smart Watch",
+    "category": 3,
+    "description": "Democratic plant right eye. Them arm window together manage.\r\nTv see back medical guy about part quickly. Social series trouble senior level personal.\r\nCarry black fire author. Life interesting nearly.",
+    "price": "94839.00",
+    "image": "products/in-galaxy-watch8-l320-sm-l320nzsains-547660098.avif",
+    "stock": 41,
+    "created_at": "2026-03-14T12:01:08.456Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 42,
+  "fields": {
+    "name": "Wireless Earbuds",
+    "category": 2,
+    "description": "Early kitchen present total responsibility. Child explain deep among surface general race.\r\nAmerican action clear recently. Behavior improve effect if finally. Sport individual blood cover.",
+    "price": "29255.00",
+    "image": "products/61p3LP0KMpL.jpg",
+    "stock": 60,
+    "created_at": "2026-03-14T12:01:08.456Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 43,
+  "fields": {
+    "name": "4K Smart TV",
+    "category": 2,
+    "description": "Customer green explain will nation. Information after artist size.\r\nExample center dark through ahead institution. Myself cost specific red. Simple test kid figure fill.",
+    "price": "61579.00",
+    "image": "products/Samsung-4k-ultra-hd-led-smart-tv-du7000-43-inch-Front-View.png.webp",
+    "stock": 32,
+    "created_at": "2026-03-14T12:01:08.456Z"
+  }
+}
+]
